@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codelab 1</title>
+  </head>
+  <body>
+    <h1>Addition of numbers</h1>
+    <form
+      action=""
+      name="formAdd"
+      id="formAdd"
+      onsubmit="return addition()"
+      method="post"
+    >
+      <label for="first_number">First Number</label>
+      <input type="number" name="first_number" id="first_number" />
+      <label for="second_number">Second Number</label>
+      <input type="number" name="second_number" id="second_number" />
+      <br />
+      <br />
+      <input type="submit" value="Submit" />
+      <input type="button" onclick="resetButton()" value="Reset" />
+    </form>
+
+    <script>
+      function addition() {
+        let first_number = document.forms["formAdd"]["first_number"].value;
+        let second_number = document.forms["formAdd"]["second_number"].value;
+        let total = parseInt(first_number) + parseInt(second_number);
+        alert("Hasil Penjumalahan = " + total);
+      }
+
+      function resetButton() {
+        document.getElementById("formAdd").reset();
+      }
+    </script>
+  </body>
+</html>

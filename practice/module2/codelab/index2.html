@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <table>
+      <form
+        action=""
+        name="formVal"
+        id="formVal"
+        onsubmit="return formValidation()"
+        method="post"
+      >
+        <tr>
+          <td><label for="full_name">Nama Lengkap</label></td>
+          <td><input type="text" name="full_name" id="full_name" /></td>
+        </tr>
+        <tr>
+          <td><label for="email">Email</label></td>
+          <td><input type="email" name="email" id="email" /></td>
+        </tr>
+        <tr>
+          <td><label for="address">Address</label></td>
+          <td>
+            <textarea
+              name="address"
+              id="address"
+              cols="30"
+              rows="10"
+            ></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td><input type="submit" value="Register" /></td>
+        </tr>
+      </form>
+    </table>
+
+    <script>
+      function formValidation() {
+        let full_name = document.forms["formVal"]["full_name"].value;
+        let email = document.forms["formVal"]["email"].value;
+        let address = document.forms["formVal"]["address"].value;
+
+        if (full_name == "") {
+          alert("Full Name cannot empty");
+        } else if (email == "") {
+          alert("Email cannot empty");
+        } else if (address == "") {
+          alert("Address cannot empty");
+        } else {
+          alert("Success");
+        }
+      }
+    </script>
+  </body>
+</html>
