@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kalkulator</title>
+    <style>
+      .calculator {
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      input[type="text"] {
+        width: 100%;
+        height: 40px;
+        font-size: 20px;
+        text-align: right;
+      }
+      table {
+        width: 100%;
+        margin-top: 10px;
+      }
+      table tr td {
+        width: 25%;
+        height: 50px;
+        font-size: 18px;
+        cursor: pointer;
+        background-color: darkslategray;
+      }
+
+      .number {
+        color: white;
+      }
+
+      .non-number {
+        color: yellow;
+      }
+
+      td {
+        border: 1px solid gray;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <input type="text" id="result" readonly />
+      <table>
+        <tr>
+          <td onclick="clearInput()" class="non-number">CE</td>
+          <td onclick="appendToInput('7')" class="number">7</td>
+          <td onclick="appendToInput('8')" class="number">8</td>
+          <td onclick="appendToInput('9')" class="number">9</td>
+        </tr>
+        <tr>
+          <td onclick="appendToInput('+')" class="non-number">+</td>
+          <td onclick="appendToInput('4')" class="number">4</td>
+          <td onclick="appendToInput('5')" class="number">5</td>
+          <td onclick="appendToInput('6')" class="number">6</td>
+        </tr>
+        <tr>
+          <td onclick="appendToInput('-')" class="non-number">-</td>
+          <td onclick="appendToInput('1')" class="number">1</td>
+          <td onclick="appendToInput('2')" class="number">2</td>
+          <td onclick="appendToInput('3')" class="number">3</td>
+        </tr>
+        <tr>
+          <td onclick="appendToInput('*')" class="non-number">*</td>
+          <td onclick="appendToInput('0')" class="number">0</td>
+          <td onclick="appendToInput('.')" class="non-number">.</td>
+          <td onclick="calculateResult()" class="non-number">=</td>
+        </tr>
+        <tr>
+          <td onclick="appendToInput('/')" class="non-number">/</td>
+        </tr>
+      </table>
+    </div>
+
+    <script>
+      let currentInput = "";
+
+      function appendToInput(value) {
+        currentInput += value;
+        document.getElementById("result").value = currentInput;
+      }
+
+      function clearInput() {
+        currentInput = "";
+        document.getElementById("result").value = "";
+      }
+
+      function calculateResult() {
+        try {
+          currentInput = eval(currentInput);
+          document.getElementById("result").value = currentInput;
+        } catch (error) {
+          document.getElementById("result").value = "Error";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+
+      .container {
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      input[type="text"] {
+        width: 60%;
+        padding: 5px;
+      }
+
+      button {
+        padding: 5px 10px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      li {
+        display: flex;
+        align-items: center;
+        margin: 5px 0;
+      }
+
+      .delete {
+        color: red;
+        cursor: pointer;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>To-Do List</h1>
+      <input type="text" id="task" placeholder="Add a new task" />
+      <button id="add">Add</button>
+      <ul id="taskList"></ul>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const taskInput = document.getElementById("task");
+        const addBtn = document.getElementById("add");
+        const taskList = document.getElementById("taskList");
+        let editMode = false;
+        let editItem = null;
+
+        addBtn.addEventListener("click", function () {
+          const taskText = taskInput.value.trim();
+          if (editMode) {
+            // If in edit mode, update the existing task.
+            if (editItem && taskText !== "") {
+              editItem.querySelector("span").textContent = taskText;
+              editMode = false;
+              editItem = null;
+              taskInput.value = "";
+              addBtn.textContent = "Add";
+            }
+          } else if (taskText !== "") {
+            // If not in edit mode, add a new task.
+            const li = document.createElement("li");
+            li.innerHTML = `<span>${taskText}</span> <span class="edit" style="color:green; margin-left:10px">Edit</span> <span class="delete">Delete</span>`;
+            taskList.appendChild(li);
+            taskInput.value = "";
+
+            li.querySelector(".edit").addEventListener("click", function () {
+              taskInput.value = li.querySelector("span").textContent;
+              editMode = true;
+              editItem = li;
+              addBtn.textContent = "Save";
+            });
+
+            li.querySelector(".delete").addEventListener("click", function () {
+              taskList.removeChild(li);
+            });
+          }
+        });
+
+        taskInput.addEventListener("keyup", function (event) {
+          if (event.key === "Enter") {
+            addBtn.click();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
