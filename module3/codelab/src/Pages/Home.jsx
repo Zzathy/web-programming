@@ -1,12 +1,12 @@
 import React from "react";
-import Navbar from "../Components/NavBar";
+import NavBar from "../Components/NavBar";
 import Hero from "../Components/Hero";
 import Footer from "../Components/Footer";
 
 const Home = () => {
   return (
     <>
-      <Navbar />
+      <NavBar />
       <Hero />
       <p>Halaman Home</p>
       <Footer />
