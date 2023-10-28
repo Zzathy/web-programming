@@ -44,6 +44,8 @@ class Product extends DatabaseConfig {
         while ($row = $result->fetch_assoc()) {
             $data[] = $row;
         }
+
+        return $data;
     }
 
     // Proses insert data

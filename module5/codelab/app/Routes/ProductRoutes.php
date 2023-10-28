@@ -41,7 +41,7 @@ class ProductRoutes {
         }
 
         // Jika request method delete dan path mengandung "/api/product/"
-        if ($method === "DELETE" && strpost($path, "api/product/") === 0) {
+        if ($method === "DELETE" && strpos($path, "/api/product/") === 0) {
             // Extract id dari path
             $pathParts = explode("/", $path);
             $id = $pathParts[count($pathParts) - 1];

@@ -56,7 +56,7 @@ class ProductController {
         // Lanjut jika tidak error
         $productModel = new Product();
         $response = $productModel->update([
-            "produt_name" => $inputData["product_name"]
+            "product_name" => $inputData["product_name"]
         ], $id);
 
         return $this->apiResponse(200, "success", $response);
