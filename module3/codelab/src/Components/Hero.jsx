@@ -1,23 +1,17 @@
-import { useNavigate } from "react-router-dom";
+// import Home from "../Pages/Home";
 
-const Hero = () => {
-  const navigate = useNavigate();
+const Hero = (props) => {
   return (
-    <>
-      <nav>
-        <ul>
-          <li>
-            <button onClick={() => navigate("/")}>Home</button>
-          </li>
-          <li>
-            <button onClick={() => navigate("/about")}>About</button>
-          </li>
-          <li>
-            <button onClick={() => navigate("/contact")}>Contact</button>
-          </li>
-        </ul>
-      </nav>
-    </>
+    <div class={props.page}>
+      <div class="row">
+        <div class="col-md-7 d-flex justify-content-center">
+          <div class="text-white">
+            <h1>{props.title}</h1>
+            <h4>{props.description}</h4>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 
