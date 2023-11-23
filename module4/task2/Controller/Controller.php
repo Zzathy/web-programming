@@ -6,14 +6,13 @@ include "Controller/AbstractController.php";
 
 class Controller extends AbstractController {
     var $ControllerName;
-    var $FunctionName;
     var $HTTPMethod;
 
-    public function getControllerAttribute($function, $method) {
+    public function getControllerAttribute($function) {
         return [
             "Controller Name" => $this->ControllerName,
             "Function Name" => $function,
-            "HTTP Method" => $method
+            "HTTP Method" => $this->HTTPMethod
         ];
     }
 }

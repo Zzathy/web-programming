@@ -16,13 +16,14 @@ class ModController extends Controller {
     
     public function __construct() {
         $this->ControllerName = "ModController";
+        $this->HTTPMethod = "GET";
     }
     
     public function getAllMod() {
         $Mod = new Mod;
         $devices = $Mod->deviceList();
         $response = [
-            "controller_attribute" => $this->getControllerAttribute("GetAllMod", "GET"),
+            "controller_attribute" => $this->getControllerAttribute("GetAllMod"),
             "data" => $devices
         ];
 
@@ -33,7 +34,7 @@ class ModController extends Controller {
         $Mod = new Mod;
         $devices = $Mod->deviceList();
         $response = [
-            "controller_attribute" => $this->getControllerAttribute("getModById", "GET"),
+            "controller_attribute" => $this->getControllerAttribute("getModById"),
             "data" => null
         ];
         if ($index < count($devices)) {
