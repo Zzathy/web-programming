@@ -31,15 +31,20 @@ class AuthController extends Controller
 
     public function login(LoginUserRequest $request) {
         try {
-            $user = User::where("email", $request->email)->firstOrFail();
+            $user = User::where("email", $request->email)->first();
+            if($user) {
+                $token = $user->createToken('auth_token')->plainTextToken;
 
-            $token = $user->createToken('auth_token')->plainTextToken;
-
-            return response()->json([
-                "message" => "Success",
-                "token_type" => "Bearer",
-                "access_token" => $token
-            ], 200);
+                return response()->json([
+                    "message" => "Success",
+                    "token_type" => "Bearer",
+                    "access_token" => $token
+                ], 200);
+            } else {
+                return response()->json([
+                    "message" => "Failed",
+                ], 400);
+            }
         } catch (Exception $e) {
             return response()->json($e->getMessage(), 400);
         }
